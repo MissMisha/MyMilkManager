@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import Navbar from "./Navbar";
 const Form = () => {
+
   const [darkMode, setDarkMode] = useState(false);
   return (
+    <>
+    <Navbar></Navbar>
     <div className="flex flex-col justify-center items-center w-full h-[100vh] bg-[#282D2D] px-5">
       <div className=" flex flex-col items-end justify-start  overflow-hidden mb-2 xl:max-w-3xl w-full">
         <div className="flex">
@@ -108,6 +112,7 @@ const Form = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 export default Form;
