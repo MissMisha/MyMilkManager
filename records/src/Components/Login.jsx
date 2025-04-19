@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { User, Lock, Eye, EyeOff } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [darkMode, setDarkMode] = useState(false);
@@ -106,8 +107,8 @@ export default function Login() {
             <input
               className={`w-full pl-10 pr-3 py-3 rounded-lg font-medium border ${
                 darkMode
-                  ? "bg-gray-700 text-white border-gray-600 focus:border-blue-400"
-                  : "bg-gray-50 text-gray-800 border-gray-300 focus:border-blue-500"
+                  ? "bg-gray-700 text-white border-gray-600 focus:border-indigo-500"
+                  : "bg-gray-50 text-gray-800 border-gray-300 focus:border-indigo-500"
               } placeholder-gray-500 text-sm focus:outline-none transition-colors duration-200`}
               type="email"
               placeholder="Email address"
@@ -155,14 +156,14 @@ export default function Login() {
                 type="checkbox"
                 checked={rememberMe}
                 onChange={() => setRememberMe(!rememberMe)}
-                className={`h-4 w-4 rounded border-gray-300 ${darkMode ? "bg-gray-700" : ""} text-blue-600 focus:ring-blue-500`}
+                className={`h-4 w-4 rounded border-gray-300 ${darkMode ? "bg-gray-700" : ""} text-indigo-600 focus:ring-blue-500`}
               />
               <label htmlFor="remember-me" className={`ml-2 block text-sm ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
                 Remember me
               </label>
             </div>
             <div className="text-sm">
-              <a href="#" className={`font-medium ${darkMode ? "text-blue-400 hover:text-blue-300" : "text-blue-600 hover:text-blue-500"}`}>
+              <a href="#" className={`font-medium ${darkMode ? "text-indigo-400 hover:text-indigo-300" : "text-indigo-600 hover:text-blue-500"}`}>
                 Forgot password?
               </a>
             </div>
@@ -174,7 +175,7 @@ export default function Login() {
               whileTap={{ scale: 0.99 }}
               type="submit"
               disabled={isLoading}
-              className={`relative w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center ${isLoading ? "bg-blue-400 cursor-not-allowed" : ""}`}
+              className={`relative w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center ${isLoading ? "bg-blue-400 cursor-not-allowed" : ""}`}
             >
               {isLoading && (
                 <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -186,54 +187,9 @@ export default function Login() {
             </motion.button>
           </motion.div>
 
-          <motion.div 
-            variants={itemVariants}
-            className="mt-6 flex items-center justify-center"
-          >
-            <div className={`flex-grow h-px ${darkMode ? "bg-gray-700" : "bg-gray-200"}`}></div>
-            <span className={`px-4 text-sm ${darkMode ? "text-gray-400" : "text-gray-500"}`}>OR</span>
-            <div className={`flex-grow h-px ${darkMode ? "bg-gray-700" : "bg-gray-200"}`}></div>
-          </motion.div>
+          
 
-          <motion.div 
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-3"
-          >
-            <motion.button
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
-              type="button"
-              className={`flex items-center justify-center py-2.5 px-4 rounded-lg border font-medium text-sm ${
-                darkMode 
-                  ? "border-gray-600 text-white hover:bg-gray-700" 
-                  : "border-gray-300 text-gray-700 hover:bg-gray-50"
-              } transition-colors duration-200 w-full`}
-            >
-              <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-              </svg>
-              Continue with Google
-            </motion.button>
-            
-            <motion.button
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
-              type="button"
-              className={`flex items-center justify-center py-2.5 px-4 rounded-lg border font-medium text-sm ${
-                darkMode 
-                  ? "border-gray-600 text-white hover:bg-gray-700" 
-                  : "border-gray-300 text-gray-700 hover:bg-gray-50"
-              } transition-colors duration-200 w-full`}
-            >
-              <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13.397 20.997v-8.196h2.765l.411-3.209h-3.176V7.548c0-.926.258-1.56 1.587-1.56h1.684V3.127A22.336 22.336 0 0014.201 3c-2.444 0-4.122 1.492-4.122 4.231v2.355H7.332v3.209h2.753v8.202h3.312z"/>
-              </svg>
-              Continue with Facebook
-            </motion.button>
-          </motion.div>
+          
         </motion.form>
 
         <motion.p 
@@ -243,8 +199,8 @@ export default function Login() {
           className={`mt-8 text-sm text-center ${darkMode ? "text-gray-400" : "text-gray-600"}`}
         >
           Don't have an account?{" "}
-          <a href="#" className={`${darkMode ? "text-blue-400" : "text-blue-600"} font-semibold hover:underline transition-all duration-200`}>
-            Register now
+          <a href="#" className={`${darkMode ? "text-indigo-400" : "text-indigo-600"} font-semibold hover:underline transition-all duration-200`}>
+           <Link to="/signup"> Register now</Link>
           </a>
         </motion.p>
       </motion.div>

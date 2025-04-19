@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { User, Coffee, MapPin, Phone, Mail, ChevronDown } from "lucide-react";
 import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
+import axios from "axios";
+
 
 export default function RegistrationForm() {
   
@@ -15,6 +18,27 @@ export default function RegistrationForm() {
     city: "",
     state: "",
   });
+//-------------------------------------------------
+  async function doSave() {
+    alert(JSON.stringify(formData.name));
+    const url = "http://localhost:2001/saveUser";
+   
+    try {
+        const resp = await axios.post(url, formData);  // 👈 Sending data as POST
+
+        if (resp.data.status === true) {
+            alert("Registered Successfully");
+            alert(resp.data.msg);
+        } else {
+            alert("Registration Failed");
+            alert(resp.data.msg);
+        }
+    } catch (err) {
+        console.error("Error during registration:", err);
+        alert(err);
+    }
+}
+//------------------------------------------------------
 
   const handleInputChange = (field, value) => {
     setFormData({ ...formData, [field]: value });
@@ -173,11 +197,11 @@ export default function RegistrationForm() {
                     onChange={(e) => handleInputChange("milkType", e.target.value)}
                   >
                     <option value="" disabled>Select your milk type</option>
-                    <option value="cow">Cow</option>
-                    <option value="buffalo">Buffalo</option>
-                    <option value="goat">Goat</option>
-                    <option value="almond">Almond</option>
-                    <option value="soy">Soy</option>
+                    <option value="Cow">Cow</option>
+                    <option value="Buffalo">Buffalo</option>
+                    <option value="Goat">Goat</option>
+                    <option value="Almond">Almond</option>
+                    <option value="Soy">Soy</option>
                   </select>
                 </motion.div>
 
@@ -343,6 +367,7 @@ export default function RegistrationForm() {
                   </motion.button>
                   
                   <motion.button
+                  onClick={doSave}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     className="w-2/3 py-3 px-4 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center"
@@ -364,7 +389,7 @@ export default function RegistrationForm() {
             >
               Already have an account?{" "}
               <a className={`${darkMode ? "text-blue-400" : "text-indigo-600"} font-semibold hover:underline transition-all duration-200`} href="#">
-                Log in
+                <Link to="/login">Log in</Link>
               </a>
             </motion.p>
           </div>

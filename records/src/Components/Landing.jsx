@@ -25,7 +25,7 @@ export default function Landing() {
         </p>
         <div className="mt-6 space-x-4">
           <a href="#login" className="bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-500 transition">
-            Get Started
+           <Link to="/signup"> Get Started</Link>
           </a>
           <a href="#features" className="text-indigo-600 font-semibold hover:underline">Learn More</a>
         </div>
